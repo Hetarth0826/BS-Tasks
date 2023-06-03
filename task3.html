@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+    />
+    <title>BS Task3</title>
+    <style>
+      .error {
+        color: red;
+        font-size: 0.9em;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <form class="well" action="" method="post" id="contact_form">
+        <fieldset>
+          <legend>Contact Us Today!</legend>
+
+          <div class="mb-3">
+            <label for="first_name" class="form-label">
+              <span class="bi bi-person-fill"></span> First Name
+            </label>
+            <input
+              name="first_name"
+              placeholder="First Name"
+              class="form-control"
+              type="text"
+              id="first_name"
+            />
+            <small class="error" id="first_name_error"></small>
+          </div>
+
+          <div class="mb-3">
+            <label for="last_name" class="form-label">
+              <span class="bi bi-person-fill"></span> Last Name
+            </label>
+            <input
+              name="last_name"
+              placeholder="Last Name"
+              class="form-control"
+              type="text"
+              id="last_name"
+            />
+            <small class="error" id="last_name_error"></small>
+          </div>
+
+          <div class="mb-3">
+            <label for="email" class="form-label">
+              <span class="bi bi-envelope-fill"></span> E-Mail
+            </label>
+            <input
+              name="email"
+              placeholder="E-Mail Address"
+              class="form-control"
+              type="text"
+              id="email"
+            />
+            <small class="error" id="email_error"></small>
+          </div>
+
+          <div class="mb-3">
+            <label for="phone" class="form-label">
+              <span class="bi bi-telephone-fill"></span> Phone #
+            </label>
+            <input
+              name="phone"
+              placeholder="(845)555-1212"
+              class="form-control"
+              type="text"
+              id="phone"
+            />
+            <small class="error" id="phone_error"></small>
+          </div>
+
+          <div class="mb-3">
+            <label for="address" class="form-label">
+              <span class="bi bi-house-fill"></span> Address
+            </label>
+            <input
+              name="address"
+              placeholder="Address"
+              class="form-control"
+              type="text"
+              id="address"
+            />
+            <small class="error" id="address_error"></small>
+          </div>
+
+          <div class="mb-3">
+            <label for="city" class="form-label">
+              <span class="bi bi-geo-alt-fill"></span> City
+            </label>
+            <input
+              name="city"
+              placeholder="City"
+              class="form-control"
+              type="text"
+              id="city"
+            />
+            <small class="error" id="city_error"></small>
+          </div>
+
+          <div class="mb-3">
+            <label for="state" class="form-label">
+              <span class="bi bi-flag-fill"></span> State
+            </label>
+            <select name="state" class="form-select" id="state">
+              <option value="">Please select your state</option>
+              <option>State1</option>
+              <option>State2</option>
+            </select>
+            <small class="error" id="state_error"></small>
+          </div>
+
+          <div class="mb-3">
+            <label for="zip" class="form-label">
+              <span class="bi bi-geo-alt-fill"></span> ZIP Code
+            </label>
+            <input
+              name="zip"
+              placeholder="ZIP Code"
+              class="form-control"
+              type="text"
+              id="zip"
+            />
+            <small class="error" id="zip_error"></small>
+          </div>
+
+          <div class="mb-3">
+            <label for="hosting" class="form-label">
+              <span class="bi bi-cloud-fill"></span> Hosting Needed?
+            </label>
+            <div class="form-check">
+              <input
+                class="form-check-input"
+                type="radio"
+                name="hosting"
+                id="hosting_yes"
+                value="yes"
+              />
+              <label class="form-check-label" for="hosting_yes">Yes</label>
+            </div>
+            <div class="form-check">
+              <input
+                class="form-check-input"
+                type="radio"
+                name="hosting"
+                id="hosting_no"
+                value="no"
+              />
+              <label class="form-check-label" for="hosting_no">No</label>
+            </div>
+            <small class="error" id="hosting_error"></small>
+          </div>
+
+          <div class="mb-3">
+            <label for="comment" class="form-label">
+              <span class="bi bi-pencil-fill"></span> Project Description
+            </label>
+            <textarea
+              name="comment"
+              placeholder="Project Description"
+              class="form-control"
+              id="comment"
+            ></textarea>
+            <small class="error" id="comment_error"></small>
+          </div>
+
+          <div
+            class="alert alert-danger d-none"
+            role="alert"
+            id="error_message"
+          >
+            Please fill in all the required fields.
+          </div>
+
+          <div class="mb-3">
+            <button type="submit" class="btn btn-warning">
+              Send <span class="bi bi-envelope-fill"></span>
+            </button>
+          </div>
+        </fieldset>
+      </form>
+    </div>
+
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz"
+      crossorigin="anonymous"
+    ></script>
+    <script>
+      document
+        .getElementById("contact_form")
+        .addEventListener("submit", function (event) {
+          var requiredFields = [
+            "first_name",
+            "last_name",
+            "email",
+            "phone",
+            "address",
+            "city",
+            "state",
+            "zip",
+            "hosting",
+            "comment",
+          ];
+          var hasError = false;
+
+          for (var i = 0; i < requiredFields.length; i++) {
+            var field = document.getElementById(requiredFields[i]);
+            if (!field.value.trim()) {
+              field.classList.add("is-invalid");
+              hasError = true;
+            } else {
+              field.classList.remove("is-invalid");
+            }
+          }
+
+          if (hasError) {
+            document.getElementById("error_message").classList.remove("d-none");
+            event.preventDefault();
+          }
+        });
+    </script>
+  </body>
+</html>
